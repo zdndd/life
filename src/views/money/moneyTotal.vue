@@ -1,6 +1,5 @@
 <template>
   <div>
-    <UserProfile></UserProfile>
     <router-view></router-view>
   </div>
 

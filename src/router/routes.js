@@ -3,6 +3,7 @@ import Monthly from '../views/money/money.vue'
 import MoneyTotal from '../views/money/moneyTotal.vue'
 import HK from '../views/hk/hk.vue'
 import Apartment from '../views/apartment/apartment.vue'
+import Map from '../views/apartment/map.vue'
 import NotFoundComponent from '../views/none.vue'
 
 export default [
@@ -13,7 +14,6 @@ export default [
   {
     path: '/money', component: MoneyTotal,
     children: [
-
       {
         path: 'monthly',
         component: Monthly
@@ -25,6 +25,17 @@ export default [
       }
     ]
   },
-  // {path: '/hk', component: HK},
-  {path: '/apartment', component: Apartment}
+  {path: '/apartment',component: MoneyTotal,
+    children: [
+      {
+        path: 'apartment',
+        component: Apartment
+      },
+
+      {
+        path: 'map',
+        component: Map
+      }
+    ]
+  }
 ]

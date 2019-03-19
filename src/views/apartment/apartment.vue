@@ -64,14 +64,13 @@
 
         <el-form-item label="计算结果">
           <div>
-            手续费：{{total}}万 = 契税：{{qiTax}}万 + 增值税及附加税：{{zengzhiTax}}万 + 个税{{personTax}}万 + 中介费{{form.money*form.middle/100}}万
-
+            手续费：{{total}}万 = 契税：{{qiTax}}万 + 增值税及附加税：{{zengzhiTax}}万 + 个税{{personTax}}万
+          </div>
+          <div>
+            中介费{{middle}}万
           </div>
           <div>
             首付：{{first}}
-            <!--给房东：{{form.money-229}}-->
-
-
           </div>
           <div>
             最终总价:{{total + first}}
@@ -92,21 +91,21 @@
     data() {
       return {
         form: {
-          money: '260',
-          oldMoney: '10',
+          money: '365',
+          oldMoney: '175',
           type:'1.5',
           year:'2',
-          year2:'5',
+          year2:'1',
           middle:'2'
         }
       }
     },
     computed:{
       first:function(){
-        return this.form.money *0.35
+        return (this.form.money *0.35).toFixed(2)
       },
       qiTax:function () {
-        return this.form.money*this.form.type/100
+        return (this.form.money*this.form.type/100).toFixed(3)
       },
       zengzhiTax:function () {
         let result = 0
@@ -121,9 +120,9 @@
         }else{
           //不满两年
           if(this.form.type>1){
-            result = this.form.money*5.38/100
+            result = (this.form.money*5.38/100).toFixed(3)
           }else{
-            result = this.form.money*5.38/100
+            result = (this.form.money*5.38/100).toFixed(3)
           }
         }
         return result
@@ -137,15 +136,19 @@
           //不满5年
           if(this.form.type>1){
             //非普通
-            result = (this.form.money - this.zengzhiTax)*2/100
+            result = ((this.form.money - this.zengzhiTax)*2/100).toFixed(3)
           }else{
-            result = (this.form.money - this.zengzhiTax)*1/100
+            result = ((this.form.money - this.zengzhiTax)*1/100).toFixed(3)
           }
         }
         return result
       },
+      middle:function(){
+        let _num = this.form.money* this.form.middle/100
+        return _num
+      },
       total:function(){
-        return this.qiTax + this.zengzhiTax + this.personTax + (this.form.money*this.form.middle/100)
+        return this.qiTax + this.zengzhiTax + this.personTax
       }
     },
     methods: {

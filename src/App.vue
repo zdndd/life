@@ -10,14 +10,12 @@
             </template>
 
             <el-menu-item-group>
-
               <el-menu-item index="1-1">
                 <router-link to="/money/monthly">每月花费</router-link>
               </el-menu-item>
               <el-menu-item index="1-2">
                 <router-link to="/money/hk">香港</router-link>
               </el-menu-item>
-
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
@@ -28,8 +26,16 @@
 
           <el-submenu index="4">
             <template slot="title">
-              <router-link to="/Apartment">二手房计算</router-link>
+              房
             </template>
+            <el-menu-item-group>
+              <el-menu-item index="1-1">
+                <router-link to="/apartment/apartment">二手房计算</router-link>
+              </el-menu-item>
+              <el-menu-item index="1-2">
+                <router-link to="/apartment/map">map</router-link>
+              </el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
         </el-menu>
       </el-aside>
