@@ -73,7 +73,7 @@
             首付：{{first}}
           </div>
           <div>
-            最终总价:{{total + first}}
+            最终总价:{{final}}
           </div>
 
         </el-form-item>
@@ -91,8 +91,8 @@
     data() {
       return {
         form: {
-          money: '365',
-          oldMoney: '175',
+          money: '359',
+          oldMoney: '15',
           type:'1.5',
           year:'2',
           year2:'1',
@@ -148,7 +148,10 @@
         return _num
       },
       total:function(){
-        return this.qiTax + this.zengzhiTax + this.personTax
+        return Math.ceil(this.qiTax*10000 + this.zengzhiTax*10000 + this.personTax*10000)/10000
+      },
+      final:function(){
+        return Math.ceil(this.total*10000 + this.first*10000)/10000
       }
     },
     methods: {
